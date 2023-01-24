@@ -19,7 +19,7 @@ brews:
   - name: skipper
     homepage: "https://github.com/kartverket/skipper"
     tap:
-      owner: skipper
+      owner: kartverket
       name: homebrew-skipper
     commit_author:
       name: anderssonw
