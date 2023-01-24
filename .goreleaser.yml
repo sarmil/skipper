@@ -17,6 +17,7 @@ universal_binaries:
 
 brews:
   - name: skipper
+    description: "A CLI for managing all your SKIP needs!"
     homepage: "https://github.com/kartverket/skipper"
     tap:
       owner: kartverket
@@ -24,6 +25,7 @@ brews:
     commit_author:
       name: anderssonw
       email: wandersson.98@gmail.com
+    folder: Formula
 
 checksum:
   name_template: "checksums.txt"

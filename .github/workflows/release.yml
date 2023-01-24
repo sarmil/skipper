@@ -20,12 +20,12 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+          cache: true
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
         with:
           distribution: goreleaser
           version: ${{ env.GITHUB_REF_NAME }}
           args: release --rm-dist
-          desc: "A CLI for managing all your SKIP needs!"
         env:
           GITHUB_TOKEN: ${{ secrets.SKIPPER_PUBLISHER }}
