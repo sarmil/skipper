@@ -1,0 +1,29 @@
+builds:
+  - binary: skipper
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+
+release:
+  prerelease: auto
+
+universal_binaries:
+  - replace: true
+
+brews:
+  - name: skipper
+    homepage: "https://github.com/kartverket/skipper"
+    tap:
+      owner: skipper
+      name: homebrew-skipper
+    commit_author:
+      name: anderssonw
+      email: wandersson.98@gmail.com
+
+checksum:
+  name_template: "checksums.txt"

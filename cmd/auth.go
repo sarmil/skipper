@@ -50,8 +50,8 @@ var authCmd = &cobra.Command{
 			fmt.Println("Could not find information regarding the user. Are you sure your application defaults are correct?")
 		}
 
-		fmt.Println("Current email: " + user.Email)
-		fmt.Println("Current project/context: " + getProjectFromKubernetesConfig())
+		fmt.Println("Current email used for authentication with GCP / Kubernetes: " + user.Email)
+		fmt.Println("Current Kubernetes context: " + getProjectFromKubernetesConfig())
 	},
 }
 
