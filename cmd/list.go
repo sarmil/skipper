@@ -1,6 +1,24 @@
-// /*
-// Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-// */
+/*
+Copyright © 2023 SKIP, Kartverket <william.andersson@kartverket.no>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
 package cmd
 
 import (
@@ -19,16 +37,13 @@ import (
 	"k8s.io/client-go/util/homedir"
 )
 
-// getAppsCmd represents the getApps command
-var getAppsCmd = &cobra.Command{
-	Use:   "get-apps",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+// listCmd represents the list command
+var listCmd = &cobra.Command{
+	Use:   "list",
+	Short: "Gets all applications in a namespace, or from all namespaces if not specified",
+	Long: `Gets all applications and their current status in a specific namespace using the 
+	--namespace flag. If the --namespace flag is not specified, all namespaces you are able
+	to access will be shown.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		var kubeconfig *string
 		if home := homedir.HomeDir(); home != "" {
@@ -36,7 +51,6 @@ to quickly create a Cobra application.`,
 		} else {
 			kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
 		}
-		println(*kubeconfig)
 		flag.Parse()
 
 		// TODO Choose config
@@ -75,20 +89,19 @@ to quickly create a Cobra application.`,
 
 			println("Application: " + application.GetName() + " | Status: " + application.Status.ApplicationStatus.Message)
 		}
-
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(getAppsCmd)
-	// namespace = getAppsCmd.Flag("namespace").Value.String()
+	skipAppCmd.AddCommand(listCmd)
+
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// getAppsCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// listCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// getAppsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// listCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
