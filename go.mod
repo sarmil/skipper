@@ -1,6 +1,6 @@
 module github.com/kartverket/skipper
 
-go 1.19
+go 1.21
 
 require (
 	github.com/coreos/go-oidc v2.2.1+incompatible
@@ -37,9 +37,6 @@ require (
 	sigs.k8s.io/controller-runtime v0.14.1 // indirect
 	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
-)
-
-require (
 	cloud.google.com/go/compute v1.13.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.2 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
