@@ -1,0 +1,38 @@
+# nonk8s
+apiVersion: "backstage.io/v1alpha1"
+kind: "Component"
+metadata:
+  name: "skipper"
+  tags:
+  - "private"
+spec:
+  type: "service"
+  lifecycle: "production"
+  owner: "skip"
+  system: "skip"
+---
+apiVersion: "backstage.io/v1alpha1"
+kind: "Group"
+metadata:
+  name: "security_champion_skipper"
+  title: "Security Champion skipper"
+spec:
+  type: "security_champion"
+  parent: "it_security_champions"
+  members:
+  - "omaen"
+  children:
+  - "resource:skipper"
+---
+apiVersion: "backstage.io/v1alpha1"
+kind: "Resource"
+metadata:
+  name: "skipper"
+  links:
+  - url: "https://github.com/kartverket/skipper"
+    title: "skipper på GitHub"
+spec:
+  type: "repo"
+  owner: "security_champion_skipper"
+  dependencyOf:
+  - "component:skipper"
